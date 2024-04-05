@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:price_tags/consts.dart';
+import 'package:price_tags/widgets/camera.dart';
+import 'package:price_tags/widgets/prices.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -11,16 +14,22 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedTab = 0;
 
   void onTab(int index) {
+    if (_selectedTab == index) return;
     setState(() {
       _selectedTab = index;
     });
   }
 
+  List<Widget> widgetsOpt = <Widget>[
+  CameraWidget(),
+  PricesWidget(),
+];
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        title: Text("Camera", style: TextStyle(color: Colors.black, fontSize: 30),),
+        title: Text("Price Helper", style: TextStyle(color: Colors.black, fontSize: 30),),
         backgroundColor: Colors.white,
         centerTitle: true,
         ),
@@ -38,6 +47,9 @@ class _MainScreenState extends State<MainScreen> {
             ],
             onTap: onTab,
         ),
+        body: Center(
+          child: widgetsOpt[_selectedTab],
+          ),
     );
   }
 }
