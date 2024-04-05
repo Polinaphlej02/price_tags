@@ -16,6 +16,18 @@ class __CameraWidgetStateState extends State<CameraWidget> {
         backgroundColor: Colors.white,
         centerTitle: true,
         ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const [
+             BottomNavigationBarItem(
+              icon: Icon(Icons.camera_alt_outlined),
+              label: "Camera",
+              ),
+             BottomNavigationBarItem(
+              icon: Icon(Icons.attach_money_outlined),
+              label: "Prices",
+              ),
+            ],
+        ),
     );
   }
 }
